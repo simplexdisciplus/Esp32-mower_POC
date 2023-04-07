@@ -611,7 +611,7 @@ void loop() {
   int statut_choc = -1;
   //display.clear();
   Serial.println("debut boucle");
-  statut_choc = check_bump(0);
+  statut_choc = check_bump();
   if (statut_choc > 0)stop_mot();
 #if defined(BT_ENABLE)
   SerialBT.print(" statut choc");
@@ -745,7 +745,7 @@ void loop() {
     case MODE_TONDEUSE:    // mode tondeuse
       Serial.println("tondeuse");
       vitesse_lame(100);
-      statut_choc = check_bump(0);
+      statut_choc = check_bump();
       if (statut_choc > 0)stop_mot();
 #if defined(BT_ENABLE)
       SerialBT.print(" statut choc");
@@ -796,7 +796,7 @@ void loop() {
       Serial.println("simulation");
       //mode_tondeuse(0);
       vitesse_lame(0);
-      statut_choc = check_bump(0);
+      statut_choc = check_bump();
       if (statut_choc > 0)stop_mot();
 #if defined(BT_ENABLE)
       SerialBT.print(" statut choc");
