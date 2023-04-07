@@ -2,8 +2,8 @@
 #define IBT2
 #define LAME_IBT2
 #define TIMER
-#define WIFIOTA
-#define BT_ENABLE
+//#define WIFIOTA
+//#define BT_ENABLE
 #define US_SOL
 
 #include <Arduino.h>
@@ -124,6 +124,8 @@ long long_sol;
 int warn_cent = 0, warn_gau = 0, warn_droi = 0;
 //int check_bump(int);
 volatile int bumper_state = 0;
+  int pin_trig, pin_echo;
+  long echo = 0;
 
 int vitesse_actu = 0;
 
@@ -186,7 +188,7 @@ int check_bump() {
   return bumper_state;
 }
 
-
+#if defined(WIFIOTA)
 void startOTA() { // Start the OTA service
   ArduinoOTA.setHostname(OTAName);
   ArduinoOTA.setPassword(OTAPassword);
@@ -211,7 +213,7 @@ void startOTA() { // Start the OTA service
   ArduinoOTA.begin();
   Serial.println("OTA ready\r\n");
 }
-
+#endif
 
 void setup() {
   // put your setup code here, to run once:
@@ -441,8 +443,8 @@ void arriere_mot() {
 
 long calcul_distance_univ(int capteur)
 {
-  int pin_trig, pin_echo;
-  long echo = 0;
+  //int pin_trig, pin_echo;
+  echo = 0;
   switch (capteur) {
     case 1:// capteur gauche
       pin_trig = PIN_TRIG_GAU;
