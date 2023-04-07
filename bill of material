@@ -1,0 +1,6 @@
+1 ESP32 DEV KIT V1
+4 µs sensor
+3 IBT2 motor driver (Left ,Right and blade for smooth start)
+1 RTC clock to schedule the robot
+2 switch for bumpers
+1 lcd 1306 to see lot of stuff
